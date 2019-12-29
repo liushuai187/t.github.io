@@ -184,13 +184,21 @@ function 增加段落(章节){
 }
 
 function 生成文章(){
-    var 标题 = document.getElementById("标题")
-    主题 = 标题.value
-    
-    var 字数 = document.getElementById("字数")
-    长度 = 字数.value
-    长度 = parseInt(长度)
-    let 文章 = []
+    var 标题 = document.getElementById("标题");
+    主题 = 标题.value;
+    let 标题长度 = 主题.length;
+    var 字数 = document.getElementById("字数");
+    长度 = 字数.value;
+    长度 = parseInt(长度);
+    let 文章 = [];
+
+    if (标题长度 == 0)
+    {
+        文章.push("请输入标题");
+        $("#论文").innerHTML = 文章;
+    }
+    else
+    {
     for(let 空 in 主题){
         let 章节 = "";
         let 章节长度 = 0;
@@ -215,6 +223,7 @@ function 生成文章(){
     }
     // let 排版 = "<div>" + 文章.join("</div><div>") + "</div>";
     $("#论文").innerHTML = 文章;
+}
 }
 
 console.log(生成文章())
